@@ -14,6 +14,12 @@ Generative models like Stable Diffusion are trained on large-scale internet data
 
 ## Settings
 
-* Defined in the `SDConfig`. Generated images and prompts are saved in the `./images` directory by default. 
+* You need a HuggingFace access token. See how you can generate it [here](https://huggingface.co/docs/hub/security-tokens).
+* Create an `.env` file and save the token there. If you name it other than `HF_KEY`, you need to modify the code accordingly.
+* The configuration for the model is set in `SDConfig`. 
 * We use the `stabilityai/stable-diffusion-3.5-large-turbo` model by default. Be aware that you need to get access to the models first (https://huggingface.co/stabilityai)
+* Generated images and prompts are saved in the `./images` directory by default. 
+
+## Note
+This is an ongoing project. Results as well as the project paper will also be added to this repo.
 
