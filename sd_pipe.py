@@ -32,7 +32,7 @@ class SDConfig:
     guidance_scale: float = 7.0
     device: str = "cuda"
     use_quantized: bool = False
-    csv_delimiter: str = ";"
+    csv_delimiter: str = ","
 
 def load_pipeline(cfg: SDConfig):
     device = "cuda" if cfg.device == "cuda" and torch.cuda.is_available() else "cpu"
