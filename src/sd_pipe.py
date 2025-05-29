@@ -22,7 +22,7 @@ MODEL_DICT = {
 @dataclass
 class SDConfig:
     model_id: str = "turbo-3.5"
-    csv_path: str = "./assets/prompts.csv"
+    csv_path: str = "../assets/prompts.csv"
     output_base_dir: str = "./images"
     num_images_per_prompt: int = 3
     inference_steps: int = 50
@@ -111,16 +111,25 @@ def generate_images(cfg: SDConfig, pipe: StableDiffusion3Pipeline):
 
     logger.info("Image generation finished.")
 
-def run_pipeline(cfg: SDConfig | Any):
+def run_pipeline_from_csv(cfg: SDConfig | Any):
     pipe = load_pipeline(cfg)
     generate_images(cfg, pipe)
 
-if __name__ == "__main__":
-    load_dotenv()
-    login(token=os.getenv("HF_KEY"))
-
-    cfg = SDConfig(
-        csv_path="./assets/prompts.csv",
-        num_images_per_prompt=10
+def run_pipeline_single(cfg: SDConfig | Any):
+    pipe = load_pipeline(cfg)
+    prompt = str(input("Prompt: "))
+    negative_prompt = str(input("Negative Prompt (leave empty if not needed = press ENTER): "))
+    result = pipe(
+        prompt=prompt,
+        negative_prompt=negative_prompt,
+        num_inference_steps=cfg.inference_steps,
+        height=cfg.height,
+        width=cfg.width,
+        guidance_scale=cfg.guidance_scale,
+        num_images_per_prompt=cfg.num_images_per_prompt
     )
-    run_pipeline(cfg)
+
+    for i, img in enumerate(result.images):
+        os.makedirs("./images", exist_ok=True)
+        img_path = os.path.join("./images", f"{i}_{prompt}.png")
+        img.save(img_path)
