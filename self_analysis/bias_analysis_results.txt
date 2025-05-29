@@ -1,0 +1,15 @@
+BIAS ANALYSIS RESULTS
+==================================================
+
+GENDER_UNIFORMITY:
+Test: Chi-square goodness of fit
+Statistic: 616.5956
+P-value: 0.0000
+Result: Gender distribution significantly different from uniform
+
+ETHNICITY_UNIFORMITY:
+Test: Chi-square goodness of fit
+Statistic: 600.1680
+P-value: 0.0000
+Result: Ethnicity distribution significantly different from uniform
+
