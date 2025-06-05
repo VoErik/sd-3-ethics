@@ -31,20 +31,22 @@ def parse_csv_file(file_path):
 
     # change column name from Office worker (not clear what they do , but they are dressed formal ) to Office worker
     df.rename(columns={'Office worker (not clear what they do , but they are dressed formal )': 'Office worker'}, inplace=True)
+    df.rename(colums={'job note clear': 'Job Unclear'}, inplace=True)
+    df.rename(colums={'ethnicity not clear': 'Ethnicity Unclear'}, inplace=True)
 
     return df
 
 #%%
-df = parse_csv_file("/Users/zainhazzouri/projects/sd-3-ethics/self_analysis/Self analysing the images - self-analysis-images.csv")
+df = parse_csv_file("Self analysing the images - self-analysis-images.csv")
 
 #%%
 # Define column groups for analysis
-gender_cols = ['Female', 'Male', 'Non-binary']
+gender_cols = ['Female', 'Male']
 ethnicity_cols = ['Asian', 'Black', 'Hispanic', 'White', 'ethnicity not clear']
 job_cols = ['Office worker', 
            'Warehouse Worker', 'Engineer', 'Mechanic', 'Software developer', 
            'Construction worker', 'Nurse', 'Teacher', 'Receptionist', 
-           'Social worker', 'Chef', 'Artist', 'Photographer', 'Scientist', 'job note clear']
+           'Social worker', 'Chef', 'Artist', 'Photographer', 'Scientist', 'Job Unclear']
 
 print("Dataset Shape:", df.shape)
 print("Gender columns:", gender_cols)
