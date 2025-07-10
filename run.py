@@ -7,7 +7,7 @@ import os
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--task", choices=["g", "v"], default="generate", help="g enerate, v isualize")
+parser.add_argument("--task", choices=["g", "v"], default="g", help="g enerate, v isualize")
 parser.add_argument("--num_imgs", type=int, default=10)
 parser.add_argument("--width", type=int, default=512)
 parser.add_argument("--height", type=int, default=512)

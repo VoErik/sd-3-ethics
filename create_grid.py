@@ -40,7 +40,7 @@ def create_wallpaper_grid(image_paths, wallpaper_size, thumbnail_size, output_pa
 root_directory = r'C:\Users\erik\Downloads\images'  # Change this
 wallpaper_size = (3840, 2160)          # 4K resolution
 thumbnail_size = (120, 120)            # Small thumbnails, adjust as needed
-output_file = 'wallpaper_grid.jpg'
+output_file = 'assets/wallpaper_grid.jpg'
 
 # === EXECUTION ===
 all_images = collect_image_paths(root_directory)
